@@ -1,4 +1,4 @@
 module.exports =
 {
- dbUrl:"mongodb://<dbuser>:<dbpassword>@ds111390.mlab.com:11390/s3support"
+  dbUrl:"mongodb://minhtran:123456789@ds237815.mlab.com:37815/nba"
 }

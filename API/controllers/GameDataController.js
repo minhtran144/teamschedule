@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var TeamInfo = mongoose.model('TeamInfo');
 var GameSchedule = mongoose.model('GameSchedule');
+var demomodel = mongoose.model('demomodel');
 
 exports.processRequest = function(req, res) {
     if (req.body.result.action == "schedule") {
@@ -11,10 +12,12 @@ exports.processRequest = function(req, res) {
       {
           getTeamInfo(req,res)
       }
+      else if (req.body.result.action == "book")
+      {
+          getdemomodel(req,res)
     };
 
-    function getTeamInfo(req,res)
-    {
+function getTeamInfo(req,res) {
     let teamToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.team ? req.body.result.parameters.team : 'Unknown';
     TeamInfo.findOne({name:teamToSearch},function(err,teamExists)
           {
@@ -41,82 +44,49 @@ exports.processRequest = function(req, res) {
                     source: 'team info'
                 });
             }
+            
           });
-    }
+};
 
-    function getTeamSchedule(req,res)
-{
-let parameters = req.body.result.parameters;
-    if (parameters.team1 == "")
-    {
-      let game_occurence = parameters.game_occurence;
-      let team = parameters.team;
-      if (game_occurence == "previous")
-      {
-        //previous game
-        GameSchedule.find({opponent:team},function(err,games)
-        {
-          if (err)
-          {
-            return res.json({
-                speech: 'Something went wrong!',
-                displayText: 'Something went wrong!',
-                source: 'game schedule'
-            });
-          }
-          if (games)
-          {
-            var requiredGame;
-            for (var i=0; i < games.length; i++)
-            {
-                var game = games[i];
-var convertedCurrentDate = new Date();
-                var convertedGameDate = new Date(game.date);
-if (convertedGameDate > convertedCurrentDate)
-                {
-                  if(games.length > 1)
-                  {
-                    requiredGame = games[i-1];
-var winningStatement = "";
-                    if (requiredGame.isWinner)
-                    {
-                        winningStatement = "Kings won this match by "+requiredGame.score;
-                    }
-                    else {
-                      winningStatement = "Kings lost this match by "+requiredGame.score;
-                    }
-                    return res.json({
-                        speech: 'Last game between Kings and '+parameters.team+' was played on '+requiredGame.date+' .'+winningStatement,
-                        displayText: 'Last game between Kings and '+parameters.team+' was played on '+requiredGame.date+' .'+winningStatement,
-                        source: 'game schedule'
-                    });
-                    break;
-                  }
-                  else {
-                    return res.json({
-                        speech: 'Cant find any previous game played between Kings and '+parameters.team,
-                        displayText: 'Cant find any previous game played between Kings and '+parameters.team,
-                        source: 'game schedule'
-                    });
-                  }
-                }
-            }
-}
-});
-      }
-      else {
-        return res.json({
-            speech: 'Next game schedules will be available soon',
-            displayText: 'Next game schedules will be available soon',
-            source: 'game schedule'
-        });
-      }
-    }
-    else {
-      return res.json({
-          speech: 'Cant handle the queries with two teams now. I will update myself',
-          displayText: 'Cant handle the queries with two teams now. I will update myself',
-          source: 'game schedule'
+function getTeamSchedule(req,res){
+    let teamToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.team ? req.body.result.parameters.team : 'Unknown';
+    TeamInfo.findOne({name:teamToSearch},function(err,teamExists){
+
+    return  res.json({
+            speech: 'hello',
+            displayText: 'hi',
+            source: 'team info'
+        })
+    });
+};
+
+function getdemomodel(req,res) {
+    
+   /* var BookSchema1 = mongoose.Schema({
+        name: String,
+        price: Number,
+        quantity: Number
       });
-    }
-  }
+      
+      var Bookie = mongoose.model('Bookie', BookSchema1,'bookstore14');
+      
+      var book1 = new Bookie({ name: 'Introduction to Mongoose (bookstore14)', price: 10, quantity: 25 });
+      
+      book1.save(function (err, bookie) {
+        if (err) return console.error(err);
+        console.log(bookie.name + " saved to bookstore collection.");
+      });
+      */
+        let bookname = req.body.result.parameters.bookname;
+
+        demomodel.findOne({name:bookname},function(err,teamExists){
+
+        return  res.json({
+                speech: teamExists.quantity,
+                displayText: 'We have in total '+ teamExists.quantity,
+                source: 'Library'
+            })
+        });
+
+}
+};

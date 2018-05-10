@@ -10,4 +10,5 @@ description:{
  required:false
 }
 });
-module.exports = mongoose.model('TeamInfo', TeamInfo);
+
+module.exports = mongoose.model('TeamInfo',TeamInfo);
