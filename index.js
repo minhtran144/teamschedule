@@ -27,9 +27,17 @@ server.use(bodyParser.json());
 var routes = require('./API/Routes/Routes'); //importing route
 routes(server); //register the route
 
+var app = express(),
+    
+app.get('/',function(req,res){
+    res.send('We are happy to see you using Chat Bot Webhook');
+  });
 
-server.listen((process.env.PORT || 8000), function () {
-    console.log("Server is up and listening on port");
+app.listen((process.env.PORT || 8000), function () {
+   console.log("Server is up and listening on port");
+ 
+// server.listen((process.env.PORT || 8000), function () {
+//    console.log("Server is up and listening on port");
 
 });
 
