@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/minhtran144/API.git"
+    "url": "git+https://github.com/minhtran144/teamschedule.git"
   },
   "author": "Minh Tran",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/minhtran144/API/issues"
+    "url": "https://github.com/minhtran144/teamschedule/issues"
   },
-  "homepage": "https://github.com/minhtran144/API#readme",
+  "homepage": "https://github.com/minhtran144/teamschedule#readme",
   "dependencies": {
     "express": "^4.16.3",
     "mongodb": "^3.0.8",
