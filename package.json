@@ -2,7 +2,7 @@
   "name": "teamschedule",
   "version": "1.0.0",
   "description": "The is about the connection between Dialogflow with MongoDB database.",
-  "main": "index.js",
+  // "main": "index.js",
   "scripts": {
      "start": "node index.js"
   },
