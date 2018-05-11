@@ -28,11 +28,10 @@ var routes = require('./API/Routes/Routes'); //importing route
 routes(server); //register the route
 
 
- server.listen((process.env.PORT || 8000), function () {
-   console.log("Server is up and listening on port");
-
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
 });
-
 
 
 
