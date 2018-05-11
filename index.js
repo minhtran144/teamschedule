@@ -27,9 +27,9 @@ server.use(bodyParser.json());
 var routes = require('./API/Routes/Routes'); //importing route
 routes(server); //register the route
 
-server.listen(host=s3support.herokuapp.com);
-//server.listen((process.env.PORT || 8000), function () {
-//    console.log("Server is up and listening on port" + process.env.PORT);
+
+server.listen((process.env.PORT || 8000), function () {
+    console.log("Server is up and listening on port" + process.env.PORT);
 
 });
 
