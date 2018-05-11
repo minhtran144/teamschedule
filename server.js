@@ -5,9 +5,9 @@ http         = require('http'),
 config       = require('./config'),
 server       = express(),
 mongoose     = require('mongoose');
-TeamInfo     = require('./API/Models/TeamInfo'), //created model loading here
-GameSchedule = require('./API/Models/GameSchedule'),
-demomodel    = require('./API/Models/demomodel');
+TeamInfo     = require('./API/models/TeamInfo'), //created model loading here
+GameSchedule = require('./API/models/GameSchedule'),
+demomodel    = require('./API/models/demomodel');
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
