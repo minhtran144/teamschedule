@@ -1,7 +1,7 @@
 'use strict';
 var express = require('express');
 module.exports = function(app) {
-  var gameDataController = require('../controllers/gameDataController');
+  var gameDataController = require('../controllers/GameDataController');
 var apiRoutes =  express.Router();
 app.get('/',function(req,res){
     res.send('We are happy to see you using Chat Bot Webhook');
