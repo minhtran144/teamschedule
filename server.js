@@ -24,7 +24,7 @@ db.once('open', function() {
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
-var routes = require('./API/Routes/Routes'); //importing route
+var routes = require('./api/routes/routes'); //importing route
 routes(server); //register the route
 
 
